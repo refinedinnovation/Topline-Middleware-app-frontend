@@ -1,0 +1,10 @@
+import { GetAllPaginatedTasksResponse, TaskFilter, TaskInput } from './types';
+import { JWTEncryptedData } from '@/api/controllers/authentication/types';
+import { ITask } from '@/api/models/task/type';
+export declare const findTaskById: (_id: string) => Promise<ITask | null>;
+export declare const getAllTasks: (user: JWTEncryptedData) => Promise<ITask[]>;
+export declare const getAllPaginatedTasks: (user: JWTEncryptedData, page: number, limit: number) => Promise<GetAllPaginatedTasksResponse>;
+export declare const updateTask: (id: string, task: TaskInput, user: JWTEncryptedData) => Promise<ITask | null>;
+export declare const filterTasks: (user: JWTEncryptedData, page: number, limit: number, filter: TaskFilter) => Promise<GetAllPaginatedTasksResponse>;
+export declare const createNewTask: (task: TaskInput, user: JWTEncryptedData) => Promise<ITask>;
+export declare const deleteTask: (id: string, user: JWTEncryptedData) => Promise<ITask | null>;

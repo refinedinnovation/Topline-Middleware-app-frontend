@@ -1,0 +1,24 @@
+"use strict";
+// import { Router } from 'express';
+// import { AsyncWrapper } from '@/utils';
+// import { downloadConvertedFile, getAllConvertedFiles, uploadAndConvertFile } from '../controllers/convertedfile/convertFile';
+// import multer from 'multer';
+Object.defineProperty(exports, "__esModule", { value: true });
+const tslib_1 = require("tslib");
+// const router = Router();
+// const upload = multer({ dest: 'uploads/' });
+// router.post('/uploadAndConvertFile', upload.single('file'), AsyncWrapper(uploadAndConvertFile));
+// router.get('/getAll', AsyncWrapper(getAllConvertedFiles));
+// router.get('/download/:fileName', AsyncWrapper(downloadConvertedFile));
+// export default router;
+const express_1 = require("express");
+const utils_1 = require("@/utils");
+const convertFile_1 = require("../controllers/convertedfile/convertFile");
+const multer_1 = tslib_1.__importDefault(require("multer"));
+const router = (0, express_1.Router)();
+const upload = (0, multer_1.default)({ dest: 'uploads/' });
+router.post('/uploadAndConvertFile', upload.single('file'), (0, utils_1.AsyncWrapper)(convertFile_1.uploadAndConvertFile));
+router.get('/getAll', (0, utils_1.AsyncWrapper)(convertFile_1.getAllConvertedFiles));
+router.get('/download/:fileName', (0, utils_1.AsyncWrapper)(convertFile_1.downloadConvertedFile));
+exports.default = router;
+//# sourceMappingURL=convertedFile.js.map
